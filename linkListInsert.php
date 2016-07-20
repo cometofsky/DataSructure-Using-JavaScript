@@ -45,15 +45,17 @@
       public function displayList() {
           $this->temp = $this->head;
           while ($this->temp != NULL) {
-              echo "List " . $this->temp->data;
+              echo $this->temp->data .' ';
               $this->temp = $this->temp->next;
           }
       }
 
   }
-  
-  $list=new SingleLinkList();
-  $list.push(10);
-  $list.push(12);
-  $list.push(13);
+
+  $list = new SingleLinkList();
+  $list->push(10);
+  $list->push(12);
+  $list->push(13);
+  $list->displayList();
+
   
