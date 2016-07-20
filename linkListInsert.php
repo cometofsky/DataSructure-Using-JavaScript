@@ -23,14 +23,13 @@
   class SingleLinkList {
 
       public $head;  // head node 
-      public $current; // current or end node
+      public $end; //end node
       public $temp;  // temp node
-      public $tempHead; // 
-      public $lastNode;
+      public $tempHead;
 
       public function __construct() {
           $this->head = NULL;
-          $this->current = NULL;
+          $this->end = NULL;
       }
 
       // push data to the node
@@ -38,7 +37,7 @@
           $newNode = new Node($data);
           if ($this->head == NULL) {
               $this->head = $newNode;
-              $this->current = $newNode;
+              $this->end = $newNode;
           } else {
               $newNode->next = $this->head;
               $this->head = $newNode;
@@ -60,9 +59,16 @@
           $this->tempHead->next = $node;
       }
 
-      // apend node at last
+      // apend node at last 8
       public function append($param) {
-          $this->lastNode = $this->head;
+          $endNode = new Node($param);
+          if ($this->end == NULL) {
+              $this->head = $endNode;
+              $this->end = $endNode;
+          } else {
+              $this->end->next = $endNode;
+              $this->end = $endNode;
+          }
       }
 
       // display list 
@@ -77,6 +83,7 @@
   }
 
   $list = new SingleLinkList();
+  $list->append(8);
   $list->push(10);
   $list->push(12);
   $list->push(15);
