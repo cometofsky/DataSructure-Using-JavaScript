@@ -38,14 +38,19 @@ function LinkList(){
 		//create a new node firsr
 		var endNode= new Node(val);
 
+		console.log("Called form append Node");
+
 		//if  end node is null
 		if (this.end==null) {
+			
 			this.end=endNode;
-		}
+			this.head=endNode;
+		}else{
 		//add new end at last
 		this.end.next=endNode;
 		//end end pointer to endNode 
 		this.end=endNode;
+	}
 	}//end appendNode 
 
 
@@ -66,11 +71,15 @@ function LinkList(){
 
 //create a  linklist 
 var  myLinkList = new LinkList();
+
+
+	myLinkList.appendNode(45);//append
  	myLinkList.push(12);//push 
  	myLinkList.push(13);//push
-
+myLinkList.appendNode(46);//append
  	//print list
  	myLinkList.printStack();
+
 
 //end //by Zahirul 
 
