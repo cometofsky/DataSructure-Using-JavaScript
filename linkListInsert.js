@@ -2,8 +2,7 @@
 function Node(val){
 	this.data=val;
 	this.next=null;
-}
-
+}//end node 
 
 
 //class LinkList 
@@ -11,7 +10,8 @@ function LinkList(){
 
 //create head reference 
 	this.head=null;
-
+	//create a end node refence 
+	this.end=null;
 	//push -->inset first Like stack
 	this.push=function(val){
 		//create a new node 
@@ -19,6 +19,7 @@ function LinkList(){
 		//if head is null
 		if(this.head == null){
 			this.head=newNode;
+			this.end=this.head;
 		}else{
 			//add last nodes at newNode next
 			newNode.next=this.head;
@@ -29,6 +30,23 @@ function LinkList(){
 	//end push 
 
 
+
+
+
+	//append node at end 
+	this.appendNode=function(val){
+		//create a new node firsr
+		var endNode= new Node(val);
+
+		//if  end node is null
+		if (this.end==null) {
+			this.end=endNode;
+		}
+		//add new end at last
+		this.end.next=endNode;
+		//end end pointer to endNode 
+		this.end=endNode;
+	}//end appendNode 
 
 
 
