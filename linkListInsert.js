@@ -55,6 +55,28 @@ function LinkList(){
 
 
 
+
+
+	//inset After a node 
+
+	this.insertAfterNode= function(preNode,val){
+
+		var tempHead=this.head;
+		
+		if (tempHead == null) {
+			console.log("You have a single node ");
+			return;
+		}
+
+		while(tempHead.data != preNode){
+			tempHead=tempHead.next;
+		}
+
+		var newinsetNode= new Node(val);
+		newinsetNode.next=tempHead.next;
+		tempHead.next=newinsetNode;
+	}//end inset after 
+
 	//print stack now 
 	this.printStack=function(){
 		var temp = this.head;
@@ -76,8 +98,9 @@ var  myLinkList = new LinkList();
 	myLinkList.appendNode(45);//append
  	myLinkList.push(12);//push 
  	myLinkList.push(13);//push
-myLinkList.appendNode(46);//append
+	myLinkList.appendNode(46);//append
  	//print list
+ 	myLinkList.insertAfterNode(46,10);
  	myLinkList.printStack();
 
 
