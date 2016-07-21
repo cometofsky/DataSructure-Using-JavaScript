@@ -1,42 +1,141 @@
+//create a node 
 function Node(val) {
     this.data = val;
     this.next = null;
-}
+}//end node 
 
 
-//List 
-function List() {
+//class LinkList 
+function LinkList() {
+
+//create head reference 
     this.head = null;
-   
-    this.add = push;
-    this.print = printStack;
-}
-
-
-function push(val) {
-    var newNode = new Node(val);
-//    this.head.next=null;
-    if (this.head == null) {
-        this.head = newNode;
-        
+    //create a end node refence 
+    this.end = null;
+    //push -->inset first Like stack
+    this.push = function (val) {
+        //create a new node 
+        var newNode = new Node(val);
+        //if head is null
+        if (this.head == null) {
+            this.head = newNode;
+            this.end = this.head;
+        } else {
+            //add last nodes at newNode next
+            newNode.next = this.head;
+            // move head new to first
+            this.head = newNode;
+        }
     }
-    else {
-        newNode.next = this.head;
-        this.head =newNode ;
-    }
-}
+    //end push 
 
-//print list 
-function printStack() {
-    this.temp = this.head;
-    while (this.temp != null) {
-        console.log(this.temp.data + '-->');
-        this.temp = this.temp.next;
-    }
-}
 
-var stackList = new List();
-stackList.add(12);
-stackList.add(11);
-stackList.add(10);
-stackList.print();
+//dfjskg dfjksgkljdfksjg dfgjdskfg dfjkgjdfksg dfsklgkldsfglkdfsg 
+
+
+    //append node at end 
+    this.appendNode = function (val) {
+        //create a new node firsr
+        var endNode = new Node(val);
+
+        console.log("Called form append Node");
+
+        //if  end node is null
+        if (this.end == null) {
+
+            this.end = endNode;
+            this.head = endNode;
+        } else {
+            //add new end at last
+            this.end.next = endNode;
+            //end end pointer to endNode 
+            this.end = endNode;
+        }
+    }//end appendNode 
+
+
+
+
+
+    //delete a node by value
+    this.deleteNode=function(val){
+
+    	var deleteTemp=this.head;
+    	var prevNode=null;
+    	//check if head is null
+    	if(deleteTemp==null){
+    		console.log("no Node insert yet.");
+    		return;
+    	}
+    	//check is  head node 
+    	if(deleteTemp.data === val){
+
+    		this.head=this.head.next;
+    	}else{
+
+    		while(deleteTemp.data!= val){
+    			prevNode=deleteTemp;
+    			deleteTemp=deleteTemp.next;
+    		}
+
+    		if(deleteTemp==null){console.log("Your searching note not found ");}
+
+    		prevNode.next=deleteTemp.next;
+    	}
+    }//end deleteNode
+
+
+
+    //inset After a node 
+
+    this.insertAfterNode = function (preNode, val) {
+
+        var tempHead = this.head;
+
+        if (tempHead == null) {
+            console.log("You have a single node ");
+            return;
+        }
+
+        while (tempHead.data != preNode) {
+            tempHead = tempHead.next;
+        }
+
+        var newinsetNode = new Node(val);
+        newinsetNode.next = tempHead.next;
+        tempHead.next = newinsetNode;
+    }//end inset after 
+
+    //print stack now 
+    this.printStack = function () {
+        var temp = this.head;
+        while (temp != null) {
+            console.log(temp.data);
+            temp = temp.next;
+        }//end while
+    }//end printStack
+
+}//end LinkList 
+
+
+
+
+//create a  linklist 
+var myLinkList = new LinkList();
+
+
+myLinkList.appendNode(45);//append
+myLinkList.push(12);//push 
+myLinkList.push(13);//push
+myLinkList.appendNode(46);//append
+//print list
+myLinkList.insertAfterNode(46, 10);
+myLinkList.printStack();
+myLinkList.deleteNode(10);//delete 
+myLinkList.printStack();
+
+//end //by Zahirul 
+
+
+
+
