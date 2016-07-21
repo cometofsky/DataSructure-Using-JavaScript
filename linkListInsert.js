@@ -57,6 +57,35 @@ function LinkList() {
 
 
 
+    //delete a node by value
+    this.deleteNode=function(val){
+
+    	var deleteTemp=this.head;
+    	var prevNode=null;
+    	//check if head is null
+    	if(deleteTemp==null){
+    		console.log("no Node insert yet.");
+    		return;
+    	}
+    	//check is  head node 
+    	if(deleteTemp.data === val){
+
+    		this.head=this.head.next;
+    	}else{
+
+    		while(deleteTemp.data!= val){
+    			prevNode=deleteTemp;
+    			deleteTemp=deleteTemp.next;
+    		}
+
+    		if(deleteTemp==null){console.log("Your searching note not found ");}
+
+    		prevNode.next=deleteTemp.next;
+    	}
+    }//end deleteNode
+
+
+
     //inset After a node 
 
     this.insertAfterNode = function (preNode, val) {
@@ -102,7 +131,8 @@ myLinkList.appendNode(46);//append
 //print list
 myLinkList.insertAfterNode(46, 10);
 myLinkList.printStack();
-
+myLinkList.deleteNode(10);//delete 
+myLinkList.printStack();
 
 //end //by Zahirul 
 
