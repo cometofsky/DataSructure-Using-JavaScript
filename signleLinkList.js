@@ -1,40 +1,51 @@
-//create a node 
+
+//create a node
 function Node(val) {
+    
     this.data = val;
+    
     this.next = null;
+    
 }//end node 
 
 
 //class LinkList 
 function LinkList() {
 
-//create head reference 
+    //create head reference 
     this.head = null;
+    
     //create a end node refence 
     this.end = null;
+    
     //push -->inset first Like stack
     this.push = function (val) {
+        
+        
         //create a new node 
         var newNode = new Node(val);
+        
         //if head is null
         if (this.head == null) {
+            
             this.head = newNode;
             this.end = this.head;
+            
         } else {
+            
             //add last nodes at newNode next
             newNode.next = this.head;
+            
             // move head new to first
             this.head = newNode;
         }
     }
-    //end push 
-
-
-//dfjskg dfjksgkljdfksjg dfgjdskfg dfjkgjdfksg dfsklgkldsfglkdfsg 
+    //end push
 
 
     //append node at end 
     this.appendNode = function (val) {
+        
         //create a new node firsr
         var endNode = new Node(val);
 
@@ -45,11 +56,15 @@ function LinkList() {
 
             this.end = endNode;
             this.head = endNode;
+            
         } else {
+            
             //add new end at last
             this.end.next = endNode;
+            
             //end end pointer to endNode 
             this.end = endNode;
+            
         }
     }//end appendNode 
 
@@ -58,29 +73,37 @@ function LinkList() {
 
 
     //delete a node by value
-    this.deleteNode=function(val){
+    this.deleteNode = function(val){
 
-    	var deleteTemp=this.head;
-    	var prevNode=null;
+    	var deleteTemp = this.head;
+    	
+    	var prevNode = null;
+    	
     	//check if head is null
-    	if(deleteTemp==null){
+    	if(deleteTemp == null){
+    	    
     		console.log("no Node insert yet.");
     		return;
+    		
     	}
     	//check is  head node 
     	if(deleteTemp.data === val){
 
     		this.head=this.head.next;
-    	}else{
+    		
+    	} else {
 
     		while(deleteTemp.data!= val){
-    			prevNode=deleteTemp;
-    			deleteTemp=deleteTemp.next;
+    		    
+    			prevNode = deleteTemp;
+    			deleteTemp = deleteTemp.next;
+    			
     		}
 
-    		if(deleteTemp==null){console.log("Your searching note not found ");}
+    		if(deleteTemp==null) console.log("Your searching node not found ");
 
-    		prevNode.next=deleteTemp.next;
+    		prevNode.next = deleteTemp.next;
+    		
     	}
     }//end deleteNode
 
@@ -93,25 +116,39 @@ function LinkList() {
         var tempHead = this.head;
 
         if (tempHead == null) {
+            
             console.log("You have a single node ");
             return;
+            
         }
 
         while (tempHead.data != preNode) {
+            
             tempHead = tempHead.next;
+            
         }
 
         var newinsetNode = new Node(val);
+        
         newinsetNode.next = tempHead.next;
+        
         tempHead.next = newinsetNode;
+        
     }//end inset after 
+
+
 
     //print stack now 
     this.printStack = function () {
+        
         var temp = this.head;
+        
         while (temp != null) {
+            
             console.log(temp.data);
+            
             temp = temp.next;
+            
         }//end while
     }//end printStack
 
@@ -128,14 +165,12 @@ myLinkList.appendNode(45);//append
 myLinkList.push(12);//push 
 myLinkList.push(13);//push
 myLinkList.appendNode(46);//append
+
+
 //print list
 myLinkList.insertAfterNode(46, 10);
 myLinkList.printStack();
 myLinkList.deleteNode(10);//delete 
 myLinkList.printStack();
 
-//end //by Zahirul 
-
-
-
-
+//end //by Zahirul
